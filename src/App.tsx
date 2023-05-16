@@ -4,6 +4,7 @@ interface ITask {
   name: string;
   done: boolean;
 }
+
 function App(): JSX.Element {
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
