@@ -56,17 +56,25 @@ function App(): JSX.Element {
       <ul className="flex flex-col gap-5">
         {tasks.map((task: ITask, index: number) => {
           return (
-            <div className="flex p-5 border-2 rounded-md justify-between" key={index}>
-              <h2 style={{ textDecoration: task.done ? "line-through" : "" }}>
+            <div
+              className="flex p-5 border-2 rounded-md justify-between"
+              key={index}
+            >
+              <h2
+                className="font-bold mr-5"
+                style={{ textDecoration: task.done ? "line-through" : "" }}
+              >
                 {task.name}
               </h2>
               <div>
-                <button onClick={() => toggleDoneTask(index)}>
-                  {task.done ? "✓" : "✗"}
-                </button>
-                <button onClick={() => removeTask(index)}>🗑</button>
+                <div className="flex flex-col">
+                  <button className="mr-5 ml-5 text-center hover:scale-110" onClick={() => toggleDoneTask(index)}>
+                    {task.done ? "✓" : "✗"}
+                  </button>
+                  <button className="hover:scale-110" onClick={() => removeTask(index)}>🗑</button>
+                </div>
+                <p className={`text-center font-bold cursor-default ${task.done ? "text-green-500": "text-red-500"}`}>{task.done + ""}</p>
               </div>
-              <p>{task.done + ""}</p>
             </div>
           );
         })}
